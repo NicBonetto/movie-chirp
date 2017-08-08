@@ -1,0 +1,48 @@
+{
+  "name": "movie-chirp",
+  "version": "1.0.0",
+  "description": "A web app for movie buffs that want a live-stream of non-critic movie reviews.",
+  "main": "index.js",
+  "scripts": {
+    "db:down": "pg-bump down",
+    "db:up": "pg-bump up",
+    "db:rebuild": "pg-bump down && pg-bump up",
+    "db:make": "pg-bump create",
+    "watch:client": "watchify client/main.js -v -o server/public/bundle.js -t babelify",
+    "bundle": "browserify -t babelify client/main.js > server/public/bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicBonetto/movie-chirp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicBonetto/movie-chirp/issues"
+  },
+  "homepage": "https://github.com/NicBonetto/movie-chirp#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "knex": "^0.13.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.2",
+    "sentiment": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "npm-run-all": "^4.0.2",
+    "pg": "^7.1.0",
+    "pg-bump": "^1.0.3",
+    "watchify": "^3.9.0"
+  }
+}

@@ -1,11 +1,14 @@
 import React from 'react'
+import Store from './store'
 
 export default class Search extends React.Component {
   search(e) {
     e.preventDefault()
+    Store.dispatch({ type: 'CLEAR_STATE' })
     const search = this.refs.keyword.value
     const keyword = search.replace(/\s/g, '')
     this.props.socket.emit('search', { keyword: keyword })
+
   }
 
   render() {

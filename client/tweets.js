@@ -2,6 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 class Tweets extends React.Component {
+  findSentiment(sentiment) {
+    if (sentiment > 0) return 'positive fa fa-chevron-up pull-right'
+    else if (sentiment < 0) return 'negative fa fa-chevron-down pull-right'
+    else return 'neutral fa fa-circle pull-right'
+  }
+
   render() {
     const stream = this.props.tweets.map((element, index) => {
       return (
@@ -9,6 +15,7 @@ class Tweets extends React.Component {
           <div className="media">
             <img className="d-flex align-self-start mr-3" id="tweet-image" src={element.tweet.user.profile_image_url_https}/>
             <div className="media-body">
+              <span className={this.findSentiment(element.tweet.sentiment.score)}></span>
               <h4 className="mt-0 mb-1">
                 {element.tweet.user.name}
               </h4>

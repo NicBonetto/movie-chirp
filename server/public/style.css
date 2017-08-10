@@ -65,3 +65,15 @@
   background-color: rgba(0, 13, 28, 1);
   background-size: cover;
 }
+
+.positive {
+  color: rgba(37, 111, 91, 1);
+}
+
+.negative {
+  color: rgba(168, 56, 59, 1);
+}
+
+.neutral {
+  color: rgba(170, 163, 57, 1);
+}

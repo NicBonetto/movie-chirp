@@ -1,0 +1,5 @@
+{
+  "connectionVar": "DATABASE_URL",
+  "journalTable": "pg_bump_migrations",
+  "files": "./migrations"
+}

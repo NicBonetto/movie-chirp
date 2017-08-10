@@ -31,7 +31,11 @@
 }
 
 #search-bar {
-  padding-top: 13%;
+  margin-top: 13%;
+}
+
+#search-input {
+  border: 2px;
 }
 
 #search-button {
@@ -52,12 +56,12 @@
   overflow: auto;
 }
 
+#tweet-image {
+  border-radius: 50%;
+}
+
 #stream-page {
   height: 100vh;
   background-color: rgba(0, 13, 28, 1);
   background-size: cover;
-}
-
-.hidden {
-  display: none;
 }

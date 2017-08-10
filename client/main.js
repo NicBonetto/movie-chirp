@@ -4,7 +4,7 @@ import App from './application'
 import Store from './store'
 import io from 'socket.io-client'
 
-const socket = io.connect('http://localhost:3000')
+const socket = io.connect('/')
 
 socket.on('sendTweet', tweet => {
   Store.dispatch({ type: 'TWEET_RECEIVED', payload: { tweets: tweet } })

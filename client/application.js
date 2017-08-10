@@ -8,10 +8,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        < Search socket={this.props.socket} />
-        < Provider store={ Store } >
-          < Tweets />
-        < /Provider >
+        <Search socket={this.props.socket}/>
+        <Provider store={Store}>
+          <Tweets/>
+        </Provider>
       </div>
     )
   }

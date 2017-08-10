@@ -1,9 +1,14 @@
 {
   "name": "movie-chirp",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.2.1"
+  },
   "description": "A web app for movie buffs that want a live-stream of non-critic movie reviews.",
   "main": "server/app.js",
   "scripts": {
+    "heroku-postbuild": "npm run db:up",
+    "postinstall": "npm run bundle",
     "db:down": "pg-bump down",
     "db:up": "pg-bump up",
     "db:rebuild": "pg-bump down && pg-bump up",

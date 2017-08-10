@@ -20,12 +20,11 @@ const twitter = new Twitter({
 
 app.use(express.static(__dirname + '/public/'))
 
-io.on('connection', (socket) => {
-  console.log('New Socket Connection')
-  socket.on('search', (payload) => {
+io.on('connection', socket => {
+  socket.on('search', payload => {
     const twitStream = twitter.stream('statuses/filter', { language: 'en', track: payload.keyword })
 
-    twitStream.on('tweet', (tweet) => {
+    twitStream.on('tweet', tweet => {
       socket.emit('sendTweet', { tweet })
     })
 

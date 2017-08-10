@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500');
+
+#search-page {
+  height: 100vh;
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(http://www.publicdomainpictures.net/pictures/30000/velka/film-background-1334067869u9d.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  position: relative;
+}
+
+.text-style {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: rgba(205, 208, 211, 1);
+}
+
+#title-header {
+  padding-top: 15%;
+}
+
+#movie-search {
+  margin-left: 37%;
+}
+
+#search-bar {
+  padding-top: 13%;
+}
+
+#search-button {
+  color: rgba(7, 35, 70, 1);
+  background-color: rgba(205, 208, 211, 1);
+}
+
+#live-stream {
+  margin-top: 5%;
+}
+
+#card-head {
+  text-align: center;
+}
+
+#twitter-stream {
+  height: 35rem;
+  overflow: auto;
+}
+
+#stream-page {
+  height: 100vh;
+  background-color: rgba(0, 13, 28, 1);
+  background-size: cover;
+}
+
+.hidden {
+  display: none;
+}

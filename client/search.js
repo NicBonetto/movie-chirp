@@ -24,7 +24,7 @@ export default class Search extends React.Component {
           <div className="col-sm-3" id="movie-search">
             <form onSubmit={ this.search.bind(this) } className="form-group" id="search-bar">
               <div className="input-group">
-                <input type="text" ref="keyword" className="form-control" placeholder="Movie Title" autoFocus="autofocus"/>
+                <input type="text" ref="keyword" id="search-input" className="form-control" placeholder="Movie Title" autoFocus="autofocus"/>
                 <span className="input-group-btn">
                   <button id="search-button" className="btn btn-default" type="submit">Search</button>
                 </span>

@@ -4,11 +4,10 @@ import { connect } from 'react-redux'
 class Tweets extends React.Component {
   render() {
     const stream = this.props.tweets.map((element, index) => {
-      console.log(element)
       return (
         <li className="list-group-item" key={index}>
           <div className="media">
-            <img className="d-flex align-self-start mr-3" src={element.tweet.user.profile_image_url_https}/>
+            <img className="d-flex align-self-start mr-3" id="tweet-image" src={element.tweet.user.profile_image_url_https}/>
             <div className="media-body">
               <h4 className="mt-0 mb-1">
                 {element.tweet.user.name}
@@ -20,7 +19,7 @@ class Tweets extends React.Component {
       )
     })
     return (
-      <section className="container-fluid hidden" id="stream-page">
+      <section className="container-fluid" id="stream-page">
         <div className="container">
           <div className="row">
             <div className="col-sm-5">

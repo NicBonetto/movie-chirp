@@ -10,7 +10,7 @@ export default class App extends React.Component {
       <div>
         < Search socket={this.props.socket} />
         < Provider store={ Store } >
-            < Tweets />
+          < Tweets />
         < /Provider >
       </div>
     )

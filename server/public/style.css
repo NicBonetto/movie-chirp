@@ -75,5 +75,38 @@
 }
 
 .neutral {
-  color: rgba(170, 163, 57, 1);
+  color: rgba(204, 204, 0, 1);
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid rgba(104, 126, 153, 1);
+  border-bottom: 16px solid rgba(104, 126, 153, 1);
+  width: 120px;
+  height: 120px;
+  margin-left: 34%;
+  margin-top: 10%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#chart-container {
+  margin-top: 5%;
+  margin-left: 20%;
+  height: 60vh;
+  overflow: auto;
+}
+
+#chart-header {
+  text-align: center;
+}
+
+#chart-stream {
+  margin-top: -6vh;
+  margin-left: 9vh;
 }

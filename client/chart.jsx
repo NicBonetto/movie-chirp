@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 class Chart extends React.Component {
   overallSentiment() {
     let overall
-    if (this.props.sentiment[0].positive === 0 && this.props.sentiment[1].negative === 0 && this.props.sentiment[2].neutral ===0) return
-    (this.props.sentiment[0].negative > this.props.sentiment[1].positive) ? overall = (<span className="fa fa-thumbs-o-down negative"></span>) : overall = (<span className="fa fa-thumbs-o-up positive"></span>)
+    if (this.props.sentiment[0].positive === 0 && this.props.sentiment[1].negative === 0 && this.props.sentiment[2].neutral === 0) return
+    (this.props.sentiment[1].negative > this.props.sentiment[0].positive) ? overall = (<span className="fa fa-thumbs-o-down negative"></span>) : overall = (<span className="fa fa-thumbs-o-up positive"></span>)
     return overall
   }
 

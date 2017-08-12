@@ -28,7 +28,7 @@ export default class Search extends React.Component {
       <section className="container-fluid" id="search-page">
         <div className="row">
           <div className="col-sm-12">
-            <h1 className="text-center text-style" id="title-header">Movie Chirp</h1>
+            <h1 className="text-center title-style" id="title-header">Movie Chirp</h1>
           </div>
           <div className="col-sm-12">
             <h4 className="text-style text-center">See what people are saying about the movies.</h4>

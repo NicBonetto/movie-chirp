@@ -3,6 +3,13 @@ import { PieChart } from 'react-d3'
 import { connect } from 'react-redux'
 
 class Chart extends React.Component {
+  overallSentiment() {
+    let overall
+    if (this.props.sentiment[0].positive === 0 && this.props.sentiment[1].negative === 0 && this.props.sentiment[2].neutral ===0) return
+    (this.props.sentiment[0].negative > this.props.sentiment[1].positive) ? overall = (<span className="fa fa-thumbs-o-down negative"></span>) : overall = (<span className="fa fa-thumbs-o-up positive"></span>)
+    return overall
+  }
+
   hasSentiment() {
     const data = []
     const pos = this.props.sentiment[0].positive
@@ -27,9 +34,17 @@ class Chart extends React.Component {
   render() {
     return (
       <div className="col-md-7">
+        <div id="popular-opinion">
+          <h3>
+            Popular Opinion
+          </h3>
+          <div>
+            {this.overallSentiment()}
+          </div>
+        </div>
         <div className="card" id="chart-container">
           <div className="card-header" id="chart-header">
-            Streaming Sentiment
+            Streaming Sentiment <span className="fa fa-pie-chart"></span>
           </div>
           <div id="chart-stream">
             <PieChart

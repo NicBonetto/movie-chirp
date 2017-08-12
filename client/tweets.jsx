@@ -43,7 +43,7 @@ class Tweets extends React.Component {
             <div className="col-md-5">
               <div className="card" id="live-stream">
                 <div className="card-header" id="card-head">
-                  Live Twitter Feed
+                  Live Twitter Feed <span className="fa fa-twitter"></span>
                 </div>
                 <div id="twitter-stream">
                   <ul className='list-group list-group-flush'>

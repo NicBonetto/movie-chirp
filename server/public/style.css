@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500');
+@import url('https://fonts.googleapis.com/css?family=Lora:400,700');
+
 
 #search-page {
   height: 100vh;
@@ -13,6 +15,13 @@
   background-attachment: fixed;
   background-position: top;
   position: relative;
+}
+
+.title-style {
+  font-family: 'Lora', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(205, 208, 211, 1);
 }
 
 .text-style {
@@ -64,4 +73,76 @@
   height: 100vh;
   background-color: rgba(0, 13, 28, 1);
   background-size: cover;
+}
+
+.positive {
+  color: rgba(37, 111, 91, 1);
+}
+
+.negative {
+  color: rgba(168, 56, 59, 1);
+}
+
+.neutral {
+  color: rgba(204, 204, 0, 1);
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid rgba(104, 126, 153, 1);
+  border-bottom: 16px solid rgba(104, 126, 153, 1);
+  width: 120px;
+  height: 120px;
+  margin-left: 34%;
+  margin-top: 10%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#chart-container {
+  margin-top: 5%;
+  margin-left: 20%;
+  height: 60vh;
+  overflow: auto;
+}
+
+#chart-header {
+  text-align: center;
+}
+
+#chart-stream {
+  margin-top: -6vh;
+  margin-left: 9vh;
+}
+
+#popular-opinion {
+  margin-top: 3%;
+  margin-left: 20%;
+  display: inline-block;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+}
+
+#popular-opinion h3 {
+  display: inline-block;
+  padding: 10px 0 10px 10px;
+  margin: 0;
+  width: 220px;
+  color: #4d4d4d;
+  font-size: 24px;
+  border-right: 1px solid #1a252f;
+  border-radius: 5px 0 0 5px;
+  background-color: #d5d5d5;
+}
+
+#popular-opinion div {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 0 10px;
+  color: #666;
 }

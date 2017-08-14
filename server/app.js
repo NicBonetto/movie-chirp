@@ -4,6 +4,7 @@ dotenv.config()
 import express from 'express'
 import http from 'http'
 import Twitter from 'twit'
+import Sentiment from 'sentiment'
 
 const app = express()
 const server = http.Server(app)
@@ -20,11 +21,20 @@ const twitter = new Twitter({
 
 app.use(express.static(__dirname + '/public/'))
 
-io.on('connection', socket => {
+io.on('connect', socket => {
+  let hasSearched = false
+  let twitStream
+
   socket.on('search', payload => {
-    const twitStream = twitter.stream('statuses/filter', { language: 'en', track: payload.keyword })
+
+    if (hasSearched) twitStream.stop()
+    else hasSearched = true
+
+    twitStream = twitter.stream('statuses/filter', { language: 'en', track: payload.keyword })
 
     twitStream.on('tweet', tweet => {
+      const opinion = Sentiment(tweet.text)
+      tweet['sentiment'] = opinion
       socket.emit('sendTweet', { tweet })
     })
 

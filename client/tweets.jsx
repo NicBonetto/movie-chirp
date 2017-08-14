@@ -1,11 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Chart from './chart.jsx'
 
 class Tweets extends React.Component {
   findSentiment(sentiment) {
     if (sentiment > 0) return 'positive fa fa-chevron-up pull-right'
     else if (sentiment < 0) return 'negative fa fa-chevron-down pull-right'
     else return 'neutral fa fa-circle pull-right'
+  }
+
+  isLoading() {
+    if (this.props.tweets.length < 1) {
+      return (
+         <li className="list-group-item">
+          <div className="loader"></div>
+        </li>
+      )
+    }
   }
 
   render() {
@@ -26,21 +37,23 @@ class Tweets extends React.Component {
       )
     })
     return (
-      <section className="container-fluid" id="stream-page">
+      <section className="container-fluid" id="stream-page" name="stream">
         <div className="container">
           <div className="row">
-            <div className="col-sm-5">
+            <div className="col-md-5">
               <div className="card" id="live-stream">
                 <div className="card-header" id="card-head">
-                  Live Twitter Feed
+                  Live Twitter Feed <span className="fa fa-twitter"></span>
                 </div>
                 <div id="twitter-stream">
-                  <ul className="list-group list-group-flush">
+                  <ul className='list-group list-group-flush'>
+                    {this.isLoading()}
                     {stream}
                   </ul>
                 </div>
               </div>
             </div>
+            <Chart/>
           </div>
         </div>
       </section>
@@ -49,7 +62,7 @@ class Tweets extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {tweets: state}
+  return {tweets: state.tweet}
 }
 
 export default connect(mapStateToProps)(Tweets)

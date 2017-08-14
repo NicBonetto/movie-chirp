@@ -1,13 +1,25 @@
 import React from 'react'
 import Store from './store'
+import Scroll from 'react-scroll'
 
 export default class Search extends React.Component {
+  scroll() {
+    const scroll = Scroll.animateScroll
+    return scroll.scrollToBottom({
+      duration: 2000,
+      delay: 200,
+      smooth: true
+    })
+  }
+
   search(e) {
     e.preventDefault()
     Store.dispatch({ type: 'CLEAR_STATE' })
+    Store.dispatch({ type: 'DELETE_SENTIMENT' })
     const search = this.refs.keyword.value
     const keyword = search.replace(/\s/g, '')
     this.props.socket.emit('search', { keyword: keyword })
+    this.scroll()
 
   }
 
@@ -16,7 +28,7 @@ export default class Search extends React.Component {
       <section className="container-fluid" id="search-page">
         <div className="row">
           <div className="col-sm-12">
-            <h1 className="text-center text-style" id="title-header">Movie Chirp</h1>
+            <h1 className="text-center title-style" id="title-header">Movie Chirp</h1>
           </div>
           <div className="col-sm-12">
             <h4 className="text-style text-center">See what people are saying about the movies.</h4>

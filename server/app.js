@@ -5,10 +5,16 @@ import express from 'express'
 import http from 'http'
 import Twitter from 'twit'
 import Sentiment from 'sentiment'
+const bodyParser = require('body-parser')
 
 const app = express()
 const server = http.Server(app)
 const io = require('socket.io')(server)
+
+const knex = require('knex')({
+  dialect: 'pg',
+  connection: process.env.DATABASE_URL
+})
 
 server.listen(process.env.PORT || 3000)
 
@@ -20,6 +26,7 @@ const twitter = new Twitter({
 })
 
 app.use(express.static(__dirname + '/public/'))
+app.use(bodyParser.json())
 
 io.on('connect', socket => {
   let hasSearched = false
@@ -43,4 +50,20 @@ io.on('connect', socket => {
       twitStream.stop()
     })
   })
+})
+
+app.get('/movies', (req, res) => {
+  knex
+    .select('*')
+    .from('movies')
+    .then(data => res.json(data))
+})
+
+app.post('/movies', (req, res) => {
+  const movieData = req.body
+  knex
+    .insert(movieData)
+    .into('movies')
+    .returning('*')
+    .then(data => res.status(201).json(data))
 })

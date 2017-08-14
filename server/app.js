@@ -5,7 +5,7 @@ import express from 'express'
 import http from 'http'
 import Twitter from 'twit'
 import Sentiment from 'sentiment'
-const bodyParser = require('body-parser')
+import bodyParser from 'body-parser'
 
 const app = express()
 const server = http.Server(app)
@@ -67,3 +67,5 @@ app.post('/movies', (req, res) => {
     .returning('*')
     .then(data => res.status(201).json(data))
 })
+
+// need to update sentiment value as twitch streams come in.

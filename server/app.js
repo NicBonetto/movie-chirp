@@ -5,10 +5,16 @@ import express from 'express'
 import http from 'http'
 import Twitter from 'twit'
 import Sentiment from 'sentiment'
+import bodyParser from 'body-parser'
 
 const app = express()
 const server = http.Server(app)
 const io = require('socket.io')(server)
+
+const knex = require('knex')({
+  dialect: 'pg',
+  connection: process.env.DATABASE_URL
+})
 
 server.listen(process.env.PORT || 3000)
 
@@ -20,6 +26,7 @@ const twitter = new Twitter({
 })
 
 app.use(express.static(__dirname + '/public/'))
+app.use(bodyParser.json())
 
 io.on('connect', socket => {
   let hasSearched = false
@@ -35,7 +42,10 @@ io.on('connect', socket => {
     twitStream.on('tweet', tweet => {
       const opinion = Sentiment(tweet.text)
       tweet['sentiment'] = opinion
-      socket.emit('sendTweet', { tweet })
+      socket.emit('sendTweet', {
+        tweet,
+        movie: payload.keyword
+      })
     })
 
     socket.once('disconnect', () => {
@@ -44,3 +54,39 @@ io.on('connect', socket => {
     })
   })
 })
+
+app.post('/movies', (req, res) => {
+  const movie = req.body.movie.toLowerCase()
+  const movieData = {
+    movie_title: movie,
+    sentiment: 1
+  }
+  findMovie(movie)
+    .then(data => {
+      if (!data.length) {
+        addMovie(movieData).then(() => res.sendStatus(201))
+      }
+      else {
+        let num = data[0].sentiment + 1
+        updateMovie(movie, num).then(() => res.sendStatus(200))
+      }
+    })
+})
+
+function findMovie(movie) {
+  return knex('movies')
+    .where('movie_title', movie)
+    .limit(1)
+}
+
+function addMovie(movie) {
+  return knex('movies')
+    .insert(movie)
+    .returning('*')
+}
+
+function updateMovie(movie, sentiment) {
+  return knex('movies')
+    .where('movie_title', movie)
+    .update('sentiment', sentiment)
+}

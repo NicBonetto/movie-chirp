@@ -7,7 +7,11 @@ import io from 'socket.io-client'
 function emitSentiment(sentiment, movie) {
   if (sentiment > 0) {
     Store.dispatch({ type: 'POSITIVE_RECEIVED', payload: { sentiment: sentiment } })
-    console.log(movie)
+    fetch('/movies', {
+      method: 'POST',
+      body: JSON.stringify({ movie }),
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
   else if (sentiment < 0) return Store.dispatch({ type:'NEGATIVE_RECEIVED', payload: { sentiment: sentiment } })
   else return Store.dispatch({ type: 'NEUTRAL_RECEIVED', payload: { payload: sentiment } })

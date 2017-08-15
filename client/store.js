@@ -11,6 +11,13 @@ function tweet(state = [], action) {
   }
 }
 
+function topMovies(state = [], action) {
+  switch (action.type) {
+    case 'MOVIES_UPDATED': return action.payload.movies
+    default: return state
+  }
+}
+
 function sentiments(state = [{positive: 0}, {negative: 0}, {neutral: 0}], action) {
   switch (action.type) {
     case 'POSITIVE_RECEIVED':
@@ -46,6 +53,7 @@ function sentiments(state = [{positive: 0}, {negative: 0}, {neutral: 0}], action
 
 const reducer = combineReducers({
   tweet,
+  topMovies,
   sentiments
 })
 

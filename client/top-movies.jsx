@@ -1,15 +1,26 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default class TopMovies extends React.Component {
+class TopMovies extends React.Component {
+  componentDidMount() {
+    fetch('/movies/top')
+      .then(res => res.json())
+      .then(data => {
+        this.props.dispatch({ type: 'MOVIES_UPDATED', payload: { movies: data } })
+      })
+  }
+
   render() {
     return (
       <section className="container-fluid">
         <div className="row">
           <div className="col-sm-12">
             <ul>
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
+              {
+                this.props.topMovies.map((movie, i) => {
+                  return <li key={ i }>{ movie.movie_title }</li>
+                })
+              }
             </ul>
           </div>
         </div>
@@ -17,3 +28,9 @@ export default class TopMovies extends React.Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return { topMovies: state.topMovies }
+}
+
+export default connect(mapStateToProps)(TopMovies)

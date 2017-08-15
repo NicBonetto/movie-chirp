@@ -42,7 +42,10 @@ io.on('connect', socket => {
     twitStream.on('tweet', tweet => {
       const opinion = Sentiment(tweet.text)
       tweet['sentiment'] = opinion
-      socket.emit('sendTweet', { tweet })
+      socket.emit('sendTweet', {
+        tweet,
+        movie: payload.keyword
+      })
     })
 
     socket.once('disconnect', () => {
@@ -52,20 +55,20 @@ io.on('connect', socket => {
   })
 })
 
-app.get('/movies', (req, res) => {
-  knex
-    .select('*')
-    .from('movies')
-    .then(data => res.json(data))
-})
-
-app.post('/movies', (req, res) => {
-  const movieData = req.body
-  knex
-    .insert(movieData)
-    .into('movies')
-    .returning('*')
-    .then(data => res.status(201).json(data))
-})
+// app.get('/movies', (req, res) => {
+//   knex
+//     .select('*')
+//     .from('movies')
+//     .then(data => res.json(data))
+// })
+//
+// app.post('/movies', (req, res) => {
+//   const movieData = req.body
+//   knex
+//     .insert(movieData)
+//     .into('movies')
+//     .returning('*')
+//     .then(data => res.status(201).json(data))
+// })
 
 // need to update sentiment value as twitch streams come in.

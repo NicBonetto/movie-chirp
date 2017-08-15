@@ -6,7 +6,8 @@ import io from 'socket.io-client'
 
 function emitSentiment(sentiment, movie) {
   if (sentiment > 0) {
-    return Store.dispatch({ type: 'POSITIVE_RECEIVED', payload: { sentiment: sentiment } })
+    Store.dispatch({ type: 'POSITIVE_RECEIVED', payload: { sentiment: sentiment } })
+    console.log(movie)
   }
   else if (sentiment < 0) return Store.dispatch({ type:'NEGATIVE_RECEIVED', payload: { sentiment: sentiment } })
   else return Store.dispatch({ type: 'NEUTRAL_RECEIVED', payload: { payload: sentiment } })
@@ -15,7 +16,6 @@ function emitSentiment(sentiment, movie) {
 const socket = io.connect('/')
 
 socket.on('sendTweet', tweet => {
-  console.log(tweet)
   Store.dispatch({ type: 'TWEET_RECEIVED', payload: { tweets: tweet } })
   emitSentiment(tweet.tweet.sentiment.score, tweet.movie)
 })

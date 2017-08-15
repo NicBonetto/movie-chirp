@@ -55,20 +55,32 @@ io.on('connect', socket => {
   })
 })
 
-// app.get('/movies', (req, res) => {
-//   knex
-//     .select('*')
-//     .from('movies')
-//     .then(data => res.json(data))
-// })
-//
-// app.post('/movies', (req, res) => {
-//   const movieData = req.body
-//   knex
-//     .insert(movieData)
-//     .into('movies')
-//     .returning('*')
-//     .then(data => res.status(201).json(data))
-// })
+app.post('/movies', (req, res) => {
+  const movie = req.body.movie.toLowerCase()
+  const movieData = {
+    movie_title: movie,
+    sentiment: 1
+  }
+  findMovie(movie)
+    .then(data => {
+      if (!data.length) {
+        knex('movies')
+          .insert(movieData)
+          .returning('*')
+          .then(() => res.sendStatus(201))
+      }
+      else {
+        let num = data[0].sentiment + 1
+        knex('movies')
+          .where('movie_title', movie)
+          .update('sentiment', num)
+          .then(() => res.sendStatus(200))
+      }
+    })
+})
 
-// need to update sentiment value as twitch streams come in.
+function findMovie(movie) {
+  return knex('movies')
+    .where('movie_title', movie)
+    .limit(1)
+}

@@ -12,9 +12,9 @@ class TopMovies extends React.Component {
 
   render() {
     return (
-      <section className="container-fluid">
+      <section className="container-fluid" id="top-movies-page">
         <div className="row">
-          <div className="col-sm-4 offset-sm-4">
+          <div className="col-sm-4 offset-sm-4" id="top-movies">
             <h1 className="text-center">Top Movies</h1>
             {
               this.props.topMovies.map((movie, i) => {

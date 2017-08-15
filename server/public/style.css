@@ -74,6 +74,19 @@
   background-size: cover;
 }
 
+#top-movies-page {
+  height: 50vh;
+  background-color: #2c3e50;
+  background-size: cover;
+  color: #bdc3c7;
+}
+
+#top-movies > h1 {
+  margin-top: 15%;
+  margin-bottom: 20px;
+  color: #ecf0f1;
+}
+
 .positive {
   color: rgba(37, 111, 91, 1);
 }

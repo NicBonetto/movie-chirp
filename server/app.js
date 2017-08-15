@@ -73,6 +73,10 @@ app.post('/movies', (req, res) => {
     })
 })
 
+app.get('/movies/top', (req, res) => {
+  topMovies().then(movies => res.json(movies))
+})
+
 function findMovie(movie) {
   return knex('movies')
     .where('movie_title', movie)
@@ -89,4 +93,10 @@ function updateMovie(movie, sentiment) {
   return knex('movies')
     .where('movie_title', movie)
     .update('sentiment', sentiment)
+}
+
+function topMovies() {
+  return knex('movies')
+    .orderBy('sentiment', 'desc')
+    .limit(3)
 }

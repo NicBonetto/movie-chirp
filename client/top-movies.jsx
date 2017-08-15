@@ -14,19 +14,27 @@ class TopMovies extends React.Component {
     return (
       <section className="container-fluid">
         <div className="row">
-          <div className="col-sm-12">
-            <ul>
-              {
-                this.props.topMovies.map((movie, i) => {
-                  return <li key={ i }>{ movie.movie_title }</li>
-                })
-              }
-            </ul>
+          <div className="col-sm-4 offset-sm-4">
+            <h1 className="text-center">Top Movies</h1>
+            {
+              this.props.topMovies.map((movie, i) => {
+                return <h5 className="text-center" key={ i }>{ capitalize(movie.movie_title) }</h5>
+              })
+            }
           </div>
         </div>
       </section>
     )
   }
+}
+
+function capitalize(movie) {
+  const words = movie.split(' ')
+  return words.map(word => {
+    const arr = word.split('')
+    arr[0] = arr[0].toUpperCase()
+    return arr.join('')
+  }).join(' ')
 }
 
 function mapStateToProps(state) {

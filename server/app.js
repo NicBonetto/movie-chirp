@@ -64,17 +64,11 @@ app.post('/movies', (req, res) => {
   findMovie(movie)
     .then(data => {
       if (!data.length) {
-        knex('movies')
-          .insert(movieData)
-          .returning('*')
-          .then(() => res.sendStatus(201))
+        addMovie(movieData).then(() => res.sendStatus(201))
       }
       else {
         let num = data[0].sentiment + 1
-        knex('movies')
-          .where('movie_title', movie)
-          .update('sentiment', num)
-          .then(() => res.sendStatus(200))
+        updateMovie(movie, num).then(() => res.sendStatus(200))
       }
     })
 })
@@ -83,4 +77,16 @@ function findMovie(movie) {
   return knex('movies')
     .where('movie_title', movie)
     .limit(1)
+}
+
+function addMovie(movie) {
+  return knex('movies')
+    .insert(movie)
+    .returning('*')
+}
+
+function updateMovie(movie, sentiment) {
+  return knex('movies')
+    .where('movie_title', movie)
+    .update('sentiment', sentiment)
 }

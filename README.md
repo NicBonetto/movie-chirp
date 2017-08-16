@@ -14,3 +14,19 @@ $ cd movie-chirp
 $ npm install
 $ npm run all
 ```
+
+# Technologies Used:
+The following list are the technologies and libraries used in Movie Chirp:
+***
+
++ JavaScript
++ CSS3
++ HTML5
++ ES2015
++ React
++ Redux
++ Node
++ PostgreSQL
++ Socket.io
++ Heroku
++ Twitter Streaming API

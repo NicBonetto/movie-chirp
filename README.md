@@ -20,6 +20,7 @@ After all the required dependencies and devDependencies are installed, set up re
 
 `$ npm run all`
 
+Go to your browser and search localhost:PORT.
 
 # Technologies Used:
 The following list are the technologies and libraries used in Movie Chirp:

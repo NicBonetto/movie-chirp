@@ -17,7 +17,7 @@
     "bundle": "browserify -t babelify client/main.jsx > server/public/bundle.js",
     "start": "babel-node .",
     "all": "run-p watch:client start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers js:babel-register --require ./test/helper.js --require ./test/js-dom.js -w -R nyan"
   },
   "repository": {
     "type": "git",
@@ -50,6 +50,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-register": "^6.26.0",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
     "chai": "^4.1.2",

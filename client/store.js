@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux'
 
-function tweet(state = [], action) {
+export function tweet(state = [], action) {
   switch (action.type) {
     case 'TWEET_RECEIVED':
       return state.concat(action.payload.tweets)
@@ -11,7 +11,7 @@ function tweet(state = [], action) {
   }
 }
 
-function sentiments(state = [{positive: 0}, {negative: 0}, {neutral: 0}], action) {
+export function sentiments(state = [{positive: 0}, {negative: 0}, {neutral: 0}], action) {
   switch (action.type) {
     case 'POSITIVE_RECEIVED':
       const pos = state[0].positive

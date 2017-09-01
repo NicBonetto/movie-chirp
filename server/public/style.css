@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500');
 @import url('https://fonts.googleapis.com/css?family=Lora:400,700');
 
-
 #search-page {
   height: 100vh;
   background-image:
@@ -73,6 +72,19 @@
   height: 100vh;
   background-color: rgba(0, 13, 28, 1);
   background-size: cover;
+}
+
+#top-movies-page {
+  height: 50vh;
+  background-color: #2c3e50;
+  background-size: cover;
+  color: #bdc3c7;
+}
+
+#top-movies > h1 {
+  margin-top: 15%;
+  margin-bottom: 20px;
+  color: #ecf0f1;
 }
 
 .positive {

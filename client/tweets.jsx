@@ -12,7 +12,7 @@ class Tweets extends React.Component {
   isLoading() {
     if (this.props.tweets.length < 1) {
       return (
-         <li className="list-group-item">
+        <li className="list-group-item">
           <div className="loader"></div>
         </li>
       )

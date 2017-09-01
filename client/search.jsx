@@ -20,7 +20,6 @@ export default class Search extends React.Component {
     const keyword = search.replace(/\s/g, '')
     this.props.socket.emit('search', { keyword: keyword })
     this.scroll()
-
   }
 
   render() {

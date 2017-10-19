@@ -1,6 +1,11 @@
 # [Movie Chirp](https://movie-chirp.herokuapp.com/)
 
 ### A web app for movie buffs that want a live-stream of non-critic movie reviews.
+
+This web app is a data-scraping tool used to get Twitter hashtag queries from user input. Just enter a search term, and get a live stream of tweets and their sentiment analysis. 
+
+Although this was originally intended for movies, you can search for anything you would like.
+
 __Live Demo:__ https://movie-chirp.herokuapp.com/
 
 *Notice: There is a daily limited number of Twitter Stream API requests.*

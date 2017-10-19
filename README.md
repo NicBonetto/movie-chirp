@@ -10,7 +10,9 @@ __Live Demo:__ https://movie-chirp.herokuapp.com/
 
 *Notice: There is a daily limited number of Twitter Stream API requests.*
 
-![](https://user-images.githubusercontent.com/28014739/29384416-d8cfccbe-8288-11e7-9238-4d8fcaff1df6.gif)
+# Preview
+
+![Movie Chirp Demo](https://user-images.githubusercontent.com/28014739/29384416-d8cfccbe-8288-11e7-9238-4d8fcaff1df6.gif)
 
 # Getting Started
 This application uses Git and Node, so ensure they are installed. Then, follow these prompts in the terminal: 

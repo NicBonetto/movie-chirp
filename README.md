@@ -36,6 +36,7 @@ The following list are the technologies and libraries used in Movie Chirp:
 + JavaScript
 + CSS3
 + HTML5
++ Boostrap 4
 + ES2015
 + React
 + Redux
